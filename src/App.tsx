@@ -1,18 +1,27 @@
 import React from 'react';
-import { Routes, Route, BrowserRouter } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import './App.css';
 
-import Login from './views/Login/Login';
-import Dashboard from './views/Dashboard/Dashboard';
+import AuthProvider from './stores/auth/AuthProvider';
+import RequireAuth from './stores/auth/RequireAuth';
+import LoginPage from './pages/Login/LoginPage';
+import DashboardPage from './pages/Dashboard/DashboardPage';
 
 function App() {
   return (
-    <BrowserRouter>
+    <AuthProvider>
       <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/" element={<LoginPage />} />
+        <Route
+          path="/dashboard"
+          element={
+            <RequireAuth>
+              <DashboardPage />
+            </RequireAuth>
+          }
+        />
       </Routes>
-    </BrowserRouter>
+    </AuthProvider>
   );
 }
 

@@ -1,7 +1,8 @@
 import React, { createContext, useContext, useState } from 'react';
 
 import { User } from '../../models/User';
-import { AuthContextType } from '../../types/Auths';
+import { AuthContextType } from '../../types/Auth';
+import { removeToken, setToken } from './LocalStorage';
 
 const AuthContext = createContext<AuthContextType | null>(null);
 
@@ -10,11 +11,13 @@ const AuthProvider: React.FC = ({ children }) => {
 
   const signin = (user: User, callback: VoidFunction) => {
     setUser(user);
+    setToken(user);
     callback();
   };
 
   const signout = (callback: VoidFunction) => {
     setUser(null);
+    removeToken();
     callback();
   };
 

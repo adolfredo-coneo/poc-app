@@ -6,6 +6,7 @@ import { useAuth } from './stores/auth/AuthProvider';
 import RequireAuth from './stores/auth/RequireAuth';
 import LoginPage from './pages/Login/LoginPage';
 import DashboardPage from './pages/Dashboard/DashboardPage';
+import FavoritesPage from './pages/Favorites/FavoritesPage';
 import { getToken } from './stores/auth/LocalStorage';
 import { User } from './models/User';
 
@@ -32,6 +33,14 @@ function App() {
         element={
           <RequireAuth>
             <DashboardPage />
+          </RequireAuth>
+        }
+      />
+      <Route
+        path="/favorites"
+        element={
+          <RequireAuth>
+            <FavoritesPage />
           </RequireAuth>
         }
       />

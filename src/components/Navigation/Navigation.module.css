@@ -1,0 +1,27 @@
+.nav ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+}
+
+.nav li {
+  margin: 0;
+  margin-left: 2rem;
+  font-size: larger;
+}
+
+.link {
+  text-decoration: none;
+  color: white;
+  cursor: pointer;
+}
+
+.nav li:hover,
+.nliv li:active {
+   color: rgb(187, 245, 204);
+}
+.active {
+  color: rgb(23, 231, 12);
+}

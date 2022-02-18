@@ -1,0 +1,21 @@
+.footer {
+  position: relative;
+  width: 100%;
+  background: rgb(63, 112, 80);
+  text-align: left;
+}
+
+.footer ul {
+  display: flex;
+  list-style: none;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  padding: 0;
+  align-items: center;
+}
+
+.footer li {
+  margin: 0;
+  margin-left: 2rem;
+  font-size: larger;
+}

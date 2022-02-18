@@ -2,16 +2,13 @@ import React from 'react';
 
 import MainLayout from '../../layouts/MainLayout';
 
-type Props = {};
-
-const DashboardPage = (props: Props) => {
-
+const FavoritesPage = () => {
   return (
     <MainLayout>
-      <div>Dashboard</div>
+      <div>Favorites</div>
       <hr />
     </MainLayout>
   );
 };
 
-export default DashboardPage;
+export default FavoritesPage;

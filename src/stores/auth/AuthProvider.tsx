@@ -1,8 +1,8 @@
 import React, { createContext, useContext, useState } from 'react';
 
 import { User } from '../../models/User';
-import { AuthContextType } from '../../types/Auth';
-import { removeToken, setToken } from './LocalStorage';
+import { AuthContextType } from '../../types/AuthContext';
+import { removeToken, setToken } from '../LocalStorage';
 
 const AuthContext = createContext<AuthContextType | null>(null);
 

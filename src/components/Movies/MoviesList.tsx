@@ -6,9 +6,9 @@ import { MoviesResponse } from '../../types/MoviesResponse';
 import MovieCard from '../../components/Movies/MovieCard';
 import classes from './MoviesList.module.css';
 
-const Movies: React.FC = () => {
+const MoviesList: React.FC = () => {
   const [page, setPage] = useState<number>(1);
-  const { isLoading, isError, error, data, isFetching, isPreviousData } =
+  const { isLoading, isError, error, data, isPreviousData } =
     useQuery<MoviesResponse, Error>(['movies', page], () => fetchMovies(page), {
       keepPreviousData: true,
     });
@@ -28,27 +28,29 @@ const Movies: React.FC = () => {
   if (isError) return <div>An error has occurred: {error}</div>;
 
   return (
-    <div>
+    <div className={classes.container}>
       {data && (
         <>
+          <div className={classes.pagination}>
+            <button onClick={handlePreviousPage} disabled={page === 1}>
+              Previous Page
+            </button>{' '}
+            <button
+              onClick={handleNextPage}
+              disabled={isPreviousData || !(data.total_pages > page)}
+            >
+              Next Page
+            </button>
+          </div>
           <div className={classes['grid-container']}>
             {data.results.map((movie) => (
               <MovieCard key={movie.id} movie={movie} />
             ))}
           </div>
-          <button onClick={handlePreviousPage} disabled={page === 1}>
-            Previous Page
-          </button>{' '}
-          <button
-            onClick={handleNextPage}
-            disabled={isPreviousData || !(data.total_pages > page)}
-          >
-            Next Page
-          </button>
         </>
       )}
     </div>
   );
 };
 
-export default Movies;
+export default MoviesList;

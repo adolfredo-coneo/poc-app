@@ -1,16 +1,11 @@
 import React from 'react';
 
-import { useAuth } from '../../stores/auth/AuthProvider';
-import BottomTabBar from '../BottomTabBar/BottomTabBar';
 import classes from './Footer.module.css';
 
 const Footer: React.FC = () => {
-  const { user } = useAuth();
-
   return (
     <footer className={classes.footer}>
-      {user && <BottomTabBar />}
-      <p className="">
+      <p className={classes.link}>
         ©Copyright 2022 by{' '}
         <a
           href="https://adolconeo.com/"

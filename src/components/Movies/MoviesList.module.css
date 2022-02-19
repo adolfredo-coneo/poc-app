@@ -1,6 +1,31 @@
+.container {
+  width: 100%;
+}
+
 .grid-container {
   display: grid;
   grid-template-columns: auto auto auto auto auto;
   gap: 10px;
   padding: 10px;
+}
+
+.pagination {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.pagination button {
+  background-color: #1e1b26;
+  border: none;
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.pagination button:disabled {
+  background-color: #c0bec7;
+  cursor: default;
 }

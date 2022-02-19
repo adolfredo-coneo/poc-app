@@ -1,15 +1,14 @@
 import React from 'react';
 
 import MainLayout from '../../layouts/MainLayout';
-import Movies from '../../components/Movies/MoviesList';
+import MoviesList from '../../components/Movies/MoviesList';
+import PageTitle from '../../components/PageTitle/PageTitle';
 
 const DashboardPage = () => {
-
   return (
     <MainLayout>
-      <div>Popular Movies</div>
-      <hr />
-      <Movies />
+      <PageTitle title="Movies" />
+      <MoviesList />
     </MainLayout>
   );
 };

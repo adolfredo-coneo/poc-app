@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import './App.css';
@@ -8,23 +8,29 @@ import RequireAuth from './stores/auth/RequireAuth';
 import LoginPage from './pages/Login/LoginPage';
 import DashboardPage from './pages/Dashboard/DashboardPage';
 import FavoritesPage from './pages/Favorites/FavoritesPage';
-import { getToken } from './stores/auth/LocalStorage';
-import { User } from './models/User';
+import { getLocalMovies, getToken } from './stores/LocalStorage';
+import { useMovies } from './stores/movies/MoviesProvider';
 
 const queryClient = new QueryClient();
 
 function App() {
-  const [token] = useState<User | null>(getToken());
   const { signin } = useAuth();
+  const { addFavorites } = useMovies();
   const navigate = useNavigate();
 
   useEffect(() => {
+    const movies = getLocalMovies();
+    if (movies) {
+      addFavorites(movies);
+    }
+    
+    const token = getToken();
     if (token) {
       signin(token, () => {
         navigate('/dashboard', { replace: true });
       });
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

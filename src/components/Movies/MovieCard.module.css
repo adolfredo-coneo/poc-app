@@ -18,10 +18,10 @@
   position: absolute;
   right: 12px;
   top: 6px;
-  z-index: 999;
+  z-index: 10;
 }
 
-.menu-icon {
+.menu-icon, .menu-icon-selected {
   border: none;
   color: white;
   padding: 12px 16px;
@@ -35,6 +35,10 @@
 }
 
 .menu-icon:hover svg {
+  fill: rgb(233, 95, 95);
+}
+
+.menu-icon-selected svg {
   fill: red;
 }
 

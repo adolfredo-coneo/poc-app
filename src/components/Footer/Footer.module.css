@@ -1,8 +1,18 @@
 .footer {
-    position: relative;
-    width: 100%;
-    background: rgb(63, 112, 80);
-    text-align: center;
-    margin-top: 5rem;
-    bottom: 0;
+  width: auto;
+}
+
+.link {
+  color: #fff;
+}
+
+.link a {
+  text-decoration: none;
+  color: rgb(233, 39, 39);
+}
+
+.link a:hover {
+  text-decoration: none;
+  color: rgb(233, 39, 39);
+  background-color: transparent;
 }

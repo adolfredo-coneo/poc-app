@@ -1,14 +1,17 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
+import { useAuth } from '../../stores/auth/AuthProvider';
+import Footer from '../Footer/Footer';
 import classes from './BottomTabBar.module.css';
 
 const BottomTabBar: React.FC = () => {
-  
+  const { user } = useAuth();
+
   return (
-    <div className={classes.footer}>
-      <ul>
-        <li className={classes.link}>
+    <div className={classes.navbar}>
+      {user && (
+        <>
           <NavLink
             to="/dashboard"
             className={(isActive) =>
@@ -17,16 +20,17 @@ const BottomTabBar: React.FC = () => {
           >
             Home
           </NavLink>
-        </li>
-        <li className={classes.link}><NavLink
+          <NavLink
             to="/favorites"
             className={(isActive) =>
               classes.link + (isActive ? ` ${classes.active}` : '')
             }
           >
             Favorites
-          </NavLink></li>
-      </ul>
+          </NavLink>
+        </>
+      )}
+      <Footer />
     </div>
   );
 };

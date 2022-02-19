@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
+import { QueryClient, QueryClientProvider } from 'react-query';
 import './App.css';
 
 import { useAuth } from './stores/auth/AuthProvider';
@@ -10,12 +11,13 @@ import FavoritesPage from './pages/Favorites/FavoritesPage';
 import { getToken } from './stores/auth/LocalStorage';
 import { User } from './models/User';
 
+const queryClient = new QueryClient();
+
 function App() {
   const [token] = useState<User | null>(getToken());
   const { signin } = useAuth();
   const navigate = useNavigate();
 
-  console.log(token);
   useEffect(() => {
     if (token) {
       signin(token, () => {
@@ -26,25 +28,27 @@ function App() {
   }, []);
 
   return (
-    <Routes>
-      <Route path="/" element={<LoginPage />} />
-      <Route
-        path="/dashboard"
-        element={
-          <RequireAuth>
-            <DashboardPage />
-          </RequireAuth>
-        }
-      />
-      <Route
-        path="/favorites"
-        element={
-          <RequireAuth>
-            <FavoritesPage />
-          </RequireAuth>
-        }
-      />
-    </Routes>
+    <QueryClientProvider client={queryClient}>
+      <Routes>
+        <Route path="/" element={<LoginPage />} />
+        <Route
+          path="/dashboard"
+          element={
+            <RequireAuth>
+              <DashboardPage />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/favorites"
+          element={
+            <RequireAuth>
+              <FavoritesPage />
+            </RequireAuth>
+          }
+        />
+      </Routes>
+    </QueryClientProvider>
   );
 }
 

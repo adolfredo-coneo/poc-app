@@ -8,7 +8,7 @@ const Header: React.FC = () => {
   return (
     <div className={classes["main-header"]}>
       <h1>
-        <Link to="/">Poc App</Link>
+        <Link to="/">Poc App - Popular Movies</Link>
       </h1>
       <Navigation />
     </div>

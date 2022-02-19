@@ -1,15 +1,15 @@
 import React from 'react';
 
 import MainLayout from '../../layouts/MainLayout';
+import Movies from '../../components/Movies/MoviesList';
 
-type Props = {};
-
-const DashboardPage = (props: Props) => {
+const DashboardPage = () => {
 
   return (
     <MainLayout>
-      <div>Dashboard</div>
+      <div>Popular Movies</div>
       <hr />
+      <Movies />
     </MainLayout>
   );
 };

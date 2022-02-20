@@ -1,6 +1,6 @@
 import { Movie } from '../models/Movie';
 
-export interface MoviesContextType {
+export type MoviesContextType = {
   movies: Array<Movie>;
   addFavorite: (movie: Movie) => void;
   removeFavorite: (movie: Movie) => void;

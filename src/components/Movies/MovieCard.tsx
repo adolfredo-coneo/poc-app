@@ -15,7 +15,9 @@ const MovieCard: React.FC<MovieCardProps> = ({ movie }) => {
   const { movies, addFavorite, removeFavorite } = useMovies();
   const navigate = useNavigate();
 
-  const handleFavoriteClick = () => {
+  const handleFavoriteClick = (event: React.MouseEvent<HTMLButtonElement> ) => {
+    //prevent propogation
+    event.stopPropagation();
     if (isFavorite) {
       removeFavorite(movie);
     } else {

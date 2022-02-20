@@ -1,6 +1,6 @@
 import { Movie } from '../models/Movie';
 
-export interface MoviesResponse {
+export type MoviesResponse = {
   page: number;
   results: Array<Movie>;
   total_pages: number;

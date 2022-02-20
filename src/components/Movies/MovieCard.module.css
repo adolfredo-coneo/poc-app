@@ -12,6 +12,7 @@
   position: relative;
   display: block;
   border-radius: 4px;
+  cursor: pointer;
 }
 
 .menu {

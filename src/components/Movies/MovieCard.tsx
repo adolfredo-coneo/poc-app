@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router';
 
 import { Movie } from '../../models/Movie';
 import classes from './MovieCard.module.css';
@@ -12,6 +13,7 @@ type MovieCardProps = {
 const MovieCard: React.FC<MovieCardProps> = ({ movie }) => {
   const [isFavorite, setIsFavorite] = useState(false);
   const { movies, addFavorite, removeFavorite } = useMovies();
+  const navigate = useNavigate();
 
   const handleFavoriteClick = () => {
     if (isFavorite) {
@@ -21,6 +23,10 @@ const MovieCard: React.FC<MovieCardProps> = ({ movie }) => {
     }
   };
 
+  const handleMovieClick = () => {
+    navigate(`/movie/${movie.id}`);
+  }
+
   useEffect(() => {
     const isFavoriteMovie = movies.find((m) => m.id === movie.id);
     setIsFavorite(Boolean(isFavoriteMovie));
@@ -28,7 +34,7 @@ const MovieCard: React.FC<MovieCardProps> = ({ movie }) => {
 
   return (
     <div className={classes.container}>
-      <div className={classes.movie}>
+      <div className={classes.movie} onClick={handleMovieClick}>
         <div className={classes.menu}>
           <button
             onClick={handleFavoriteClick}

@@ -8,6 +8,7 @@ import RequireAuth from './stores/auth/RequireAuth';
 import LoginPage from './pages/Login/LoginPage';
 import DashboardPage from './pages/Dashboard/DashboardPage';
 import FavoritesPage from './pages/Favorites/FavoritesPage';
+import MovieDetailsPage from './pages/MovieDetails/MovieDetailsPage';
 import { getLocalMovies, getToken } from './stores/LocalStorage';
 import { useMovies } from './stores/movies/MoviesProvider';
 
@@ -23,7 +24,7 @@ function App() {
     if (movies) {
       addFavorites(movies);
     }
-    
+
     const token = getToken();
     if (token) {
       signin(token, () => {
@@ -50,6 +51,14 @@ function App() {
           element={
             <RequireAuth>
               <FavoritesPage />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/movie/:id"
+          element={
+            <RequireAuth>
+              <MovieDetailsPage />
             </RequireAuth>
           }
         />
